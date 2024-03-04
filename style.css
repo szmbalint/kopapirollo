@@ -1,0 +1,77 @@
+h1 {
+    color: red;
+}
+
+body {
+    background-image: url("hatter.jpg");
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.center
+{
+    text-align: center;
+    padding-top: 30;
+}
+
+.button
+{
+    height: 40;
+    width: 100;
+    text-align: center;
+}
+
+
+@keyframes border-color-change {
+    0%, 100%{ border-color: red; }
+    50% {border-color: white;}
+
+}
+
+.clickable:hover{
+    transform: scale(1.1); /* Kép nagyítása 110%-ra hover hatására */
+    transition: transform 0.3s ease; /* Animáció időtartama és stílusa */
+    border: 4px solid;
+    animation: border-color-change 0.01s infinite;
+}
+
+.result
+{
+    font-size: 30;
+}
+
+.nyert
+{
+    font-size: 20;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.dontetlen
+{
+    font-size: 20;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.veszt
+{
+    font-size: 20;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+.flash {
+    animation: flashAnimation 0.5s linear infinite;
+    
+  }
+  
+  @keyframes flashAnimation {
+    0%, 100%{ background-color: rgb(54, 76, 95); font-size: 30; font-family: 'Courier New', Courier, monospace;}
+    20%, 80%{background-color: rgb(54, 76, 95); font-size: 30;font-family: 'Courier New', Courier, monospace;}
+    40%, 60%{background-color: rgb(54, 76, 95); font-size: 30;font-family: 'Courier New', Courier, monospace;}
+
+    30%, 70%{background-color: rgb(88, 129, 156); ;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+    10%, 90%{background-color: rgb(88, 129, 156); font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+    50% {background-color: rgb(88, 129, 156); font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+  }
+
+

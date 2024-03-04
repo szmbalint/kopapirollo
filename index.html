@@ -1,0 +1,157 @@
+<html>
+
+    <head>
+        <title>KőPapírOlló</title>
+
+        <link rel="stylesheet" href="style.css" type="text/css">
+        
+    </head>
+
+    <body>
+
+        
+        <div class="center"> <!-- Div elem a kép középre igazításához -->
+            <img class="clickable" src="rock.jpg" width="200" height="200">
+            <img class="clickable" src="paper.jpg" width="200" height="200">
+            <img class="clickable" src="scissors.jpg" width="200" height="200">
+            <br>
+            <div id="imageContainer">
+              <img id="myImage" src="alap.jpg" width="300" height="300">
+            </div>
+            <br>
+            <div class = "result" id="result"></div>
+            <div class = "nyert" id="nyert"></div>
+            <div class = "dontetlen" id="dontetlen"></div> 
+            <div class = "veszt" id="veszt"></div> 
+            
+            
+          </div>
+
+          <script>
+
+            var ossz = 0;
+            var nyert = 0;
+            var veszt = 0;
+            var dontetlen = 0;
+
+            
+            
+
+            // JavaScript kód a képváltáshoz és a nyeremény ellenőrzéshez
+            var images = ["rock.jpg", "paper.jpg", "scissors.jpg"];
+            var resultElement = document.getElementById("result");
+
+            function changeText(ertek)
+            {
+              if(ertek == 0)
+              {
+                document.getElementById("result").textContent = "Döntetlen!";
+                dontetlen++;
+                document.getElementById("dontetlen").textContent = "Döntetlen körök száma: "+ dontetlen;
+                flashElement(document.getElementById("dontetlen"));
+
+              }
+              else if(ertek == 1)
+              {
+                document.getElementById("result").textContent = "Nem nyertél!";
+                veszt++;
+                document.getElementById("veszt").textContent = "Vesztes kötök száma: "+ veszt;
+                flashElement(document.getElementById("veszt"));
+              }
+              else if(ertek == 2)
+              {
+                document.getElementById("result").textContent = "Nyertél!";
+                nyert++;
+                document.getElementById("nyert").textContent = "Nyertes körök száma: "+ nyert;
+                flashElement(document.getElementById("nyert"));
+
+              }
+              
+            }
+
+            function flashElement(element) {
+              element.classList.add("flash");
+              setTimeout(function() {
+                element.classList.remove("flash");
+              }, 500);
+            }
+
+            function changeImage()
+            {
+              let rand = Math.floor(Math.random() * 3);
+              document.getElementById("myImage").src = images[rand];
+              return rand;
+            }
+
+
+
+
+            document.querySelectorAll(".clickable").forEach(function(img) 
+            {
+              img.addEventListener("click", function() 
+              {
+
+                var imgSrc = this.src;
+                
+                var newRand = changeImage();
+                var newImageSrc = images[newRand];
+                
+                if(imgSrc.endsWith("rock.jpg"))
+                {
+                  if(newImageSrc.endsWith("rock.jpg"))
+                  {
+                    changeText(0);
+                  }           
+                  else if(newImageSrc.endsWith("paper.jpg"))
+                  {
+                    changeText(1);
+                  }
+                  else if(newImageSrc.endsWith("scissors.jpg"))
+                  {
+                    changeText(2);
+                  }
+                }
+                else if(imgSrc.endsWith("paper.jpg"))
+                {
+                  if(newImageSrc.endsWith("rock.jpg"))
+                  {
+                    changeText(2);
+                  } 
+                  else if(newImageSrc.endsWith("paper.jpg"))
+                  {
+                    changeText(0);
+                  } 
+                  else if(newImageSrc.endsWith("scissors.jpg"))
+                  {
+                    changeText(1);
+                  } 
+                }
+                else if(imgSrc.endsWith("scissors.jpg"))
+                if(newImageSrc.endsWith("rock.jpg"))
+                  {
+                    changeText(1);
+                  } 
+                  else if(newImageSrc.endsWith("paper.jpg"))
+                  {
+                    changeText(2);
+                  } 
+                  else if(newImageSrc.endsWith("scissors.jpg"))
+                  {
+                    changeText(0);
+                  } 
+
+              });
+
+
+
+            });
+           
+
+
+
+
+
+            </script>
+    </body>
+
+</html>
